@@ -20,9 +20,3 @@ declare module "@trystal/interfaces" {
     }
 
 }
-
-declare module "@trystal/data-gen" {
-    import {Chain} from "@trystal/interfaces"
-    export function buildChain(nodeSpec:string):Chain
-    export function dump(chain:Chain):string 
-}

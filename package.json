@@ -1,5 +1,5 @@
 {
-  "name": "@types/trystal",
+  "name": "@trystal/interfaces",
   "version": "1.0.0",
   "description": "Interfaces for trystal applications and modules",
   "homepage": "https://github.com/trystalnet/trist#readme",
