@@ -4,6 +4,8 @@ declare module "@trystal/interfaces" {
         id: string
         format?: string
         trystup?: string
+        link?: string
+        imgLink?: string
     }
 
     export interface Node {
@@ -24,13 +26,9 @@ declare module "@trystal/interfaces" {
     export type PayloadPropName = 'id' | 'trystup' | 'format'
     export type NodePropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload';
 
-    export interface PayloadIM extends Map<PayloadPropName, string> { 
-    toJS(): Payload;
-    }
-    export interface NodeIM extends Map<NodePropName, PayloadIM | string | number> {
-        toJS(): Node;
-    }
+    export interface PayloadIM extends Map<PayloadPropName, string> { toJS(): Payload; }
+    export interface NodeIM extends Map<NodePropName, PayloadIM | string | number> { toJS(): Node; }
+    
     export interface ChainIM extends Map<string, NodeIM> {}
     export interface IDListIM extends List<string> {}
-
 }
