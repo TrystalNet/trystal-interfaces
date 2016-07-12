@@ -19,4 +19,6 @@ declare module "@trystal/interfaces" {
         [id:string] : Node
     }
 
+    export type PayloadPropName = 'id' | 'trystup' | 'format'
+
 }
