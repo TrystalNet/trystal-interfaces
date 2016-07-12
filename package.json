@@ -1,6 +1,6 @@
 {
   "name": "@trystal/interfaces",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Interfaces for trystal applications and modules",
   "homepage": "https://github.com/trystalnet/trist#readme",
   "author": "Terence O'Neill <terry.oneill@trystal.net>",
@@ -18,12 +18,10 @@
     "url": "https://github.com/trystalnet/trist/issues"
   },
   "license": "ISC",
-  "devDependencies": {
-  },
-  "scripts": {
-  },
-  "directories": {
-  },
+  "devDependencies": {},
+  "scripts": {},
+  "directories": {},
   "dependencies": {
+    "immutable": "^3.8.1"
   }
 }
