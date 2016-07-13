@@ -1,5 +1,8 @@
 declare module "@trystal/interfaces" {
     import {Map,List} from 'immutable'
+
+    export interface IdTable<T> { [id:string]:T}
+
     export interface Payload {
         id: string
         format?: string
@@ -18,9 +21,7 @@ declare module "@trystal/interfaces" {
         payload?: Payload
     }
 
-    export interface Chain {
-        [id:string] : Node
-    }
+    export interface Chain extends IdTable<Node> { }
 
     export interface Trist {
         nodes: Chain

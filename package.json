@@ -1,6 +1,6 @@
 {
   "name": "@trystal/interfaces",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Interfaces for trystal applications and modules",
   "homepage": "https://github.com/trystalnet/trist#readme",
   "author": "Terence O'Neill <terry.oneill@trystal.net>",
