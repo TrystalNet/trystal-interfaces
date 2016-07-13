@@ -38,6 +38,9 @@ declare module "@trystal/interfaces/cloud" {
     }
 }
 declare module "@trystal/interfaces/immutable" {
+    import {List,Map} from 'immutable'
+    import * as JS from '@trystal/interfaces/js'
+
     export type PayloadPropName = 'id' | 'trystup' | 'format'
     export type NodePropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload';
     export type TristPropName = 'trist' | 'history' | 'index' | 'context' | 'nodes'
