@@ -1,50 +1,53 @@
+
 declare module "@trystal/interfaces" {
     import {Map,List} from 'immutable'
-    
-    export enum Formats { UNKNOWN= 0, FMT2014 = 20140, FMT2014A= 20141, FMT2015= 20150 }
 
-    export interface IdTable<T> { [id:string]:T}
+    namespace JS {
+        export interface IdTable<T> { [id:string]:T}
 
-    export interface Payload {
-        id: string
-        format?: string
-        trystup?: string
-        link?: string
-        imgLink?: string
+        export interface Payload {
+            id: string
+            format?: string
+            trystup?: string
+            link?: string
+            imgLink?: string
+        }
+
+        export interface Node {
+            id:string
+            prev?: string
+            next?: string
+            PV?: string
+            NV?: string
+            rlevel?: number
+            payload?: Payload
+        }
+
+        export interface Chain extends IdTable<Node> { }
+
+        export interface Trist {
+            nodes: Chain
+        }
     }
 
-    export interface Node {
-        id:string
-        prev?: string
-        next?: string
-        PV?: string
-        NV?: string
-        rlevel?: number
-        payload?: Payload
+    namespace IMM {
+        export type PayloadPropName = 'id' | 'trystup' | 'format'
+        export type NodePropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload';
+        export type TristPropName = 'trist' | 'history' | 'index' | 'context' | 'nodes'
+        export type ContextPropName = 'aid' | 'fid' | 'hid'
+
+        export interface Payload extends Map<PayloadPropName, string> { toJS(): JS.Payload; }
+        export interface Node extends Map<NodePropName, Payload | string | number> { toJS(): JS.Node; }
+        export interface Chain extends Map<string, Node> {}
+        export interface Context extends Map<ContextPropName,string> {}
+        export interface Trist extends Map<TristPropName, Chain|Context> {}
+
+        export interface IDList extends List<string> {}
     }
-
-    export interface Chain extends IdTable<Node> { }
-
-    export interface Trist {
-        nodes: Chain
-    }
-
-    // thes support immutablejs core for trists
-    export type PayloadPropName = 'id' | 'trystup' | 'format'
-    export type NodePropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload';
-    export type TristPropName = 'trist' | 'history' | 'index' | 'context' | 'nodes'
-    export type ContextPropName = 'aid' | 'fid' | 'hid'
-
-    export interface PayloadIM extends Map<PayloadPropName, string> { toJS(): Payload; }
-    export interface NodeIM extends Map<NodePropName, PayloadIM | string | number> { toJS(): Node; }
-    
-    export interface ChainIM extends Map<string, NodeIM> {}
-    export interface IDListIM extends List<string> {}
-
-    export type ContextIM = Map<ContextPropName,string>
-    export type TristIM = Map<TristPropName, ChainIM|ContextIM>
 
     namespace Cloud {
+        export enum Formats { UNKNOWN= 0, FMT2014 = 20140, FMT2014A= 20141, FMT2015= 20150 }
+        
         export interface MapItem {
             id:string, 
             rlevel?:number, 
@@ -78,4 +81,6 @@ declare module "@trystal/interfaces" {
             revisions?: Revision[]
         }
     }
+
+    export {JS, IMM, Cloud}
 }
