@@ -88,6 +88,20 @@ declare module "@trystal/interfaces/js" {
         multinode: boolean
     }
 
+    export interface Format {
+        isBold      : boolean
+        isItalic    : boolean
+        isStrikeout : boolean
+        isUnderline : boolean
+        fg          : number
+        bg          : number
+        family      : number
+        fontSize    : number
+    }
+    export interface FindParams {
+        searchUp?:boolean, 
+        fromStart?:boolean
+    }
 }
 
 declare module "@trystal/interfaces" {
