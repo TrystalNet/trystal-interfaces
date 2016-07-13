@@ -54,7 +54,7 @@ declare module "@trystal/interfaces" {
             imgLink?:string, 
             text?:string
         }
-        export interface IEdit {
+        export interface Edit {
             lineId:string,
             delta:string,
             isPatch:boolean
@@ -62,7 +62,7 @@ declare module "@trystal/interfaces" {
         export interface Revision {
             authorId: string
             date: Date
-            edits: IEdit[]
+            edits: Edit[]
             adds: string[]
             dels: string[]
         }
