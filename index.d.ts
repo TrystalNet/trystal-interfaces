@@ -22,6 +22,10 @@ declare module "@trystal/interfaces" {
         [id:string] : Node
     }
 
+    export interface Trist {
+        nodes: Chain
+    }
+
     // thes support immutablejs core for trists
     export type PayloadPropName = 'id' | 'trystup' | 'format'
     export type NodePropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload';
