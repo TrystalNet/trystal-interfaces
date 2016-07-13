@@ -32,12 +32,17 @@ declare module "@trystal/interfaces" {
     // thes support immutablejs core for trists
     export type PayloadPropName = 'id' | 'trystup' | 'format'
     export type NodePropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload';
+    export type TristPropName = 'trist' | 'history' | 'index' | 'context' | 'nodes'
+    export type ContextPropName = 'aid' | 'fid' | 'hid'
 
     export interface PayloadIM extends Map<PayloadPropName, string> { toJS(): Payload; }
     export interface NodeIM extends Map<NodePropName, PayloadIM | string | number> { toJS(): Node; }
     
     export interface ChainIM extends Map<string, NodeIM> {}
     export interface IDListIM extends List<string> {}
+
+    export type ContextIM = Map<ContextPropName,string>
+    export type TristIM = Map<TristPropName, ChainIM|ContextIM>
 
     namespace Cloud {
         export interface MapItem {
