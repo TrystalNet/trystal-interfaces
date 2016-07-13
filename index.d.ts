@@ -76,6 +76,18 @@ declare module "@trystal/interfaces/js" {
     export interface Trist {
         nodes: Chain
     }
+
+    export interface Range {
+        anchor: Node
+        focus: Node
+        first: Node
+        last: Node
+        allNodes: Node[]
+        visibleNodes: Node[]
+        level: number
+        multinode: boolean
+    }
+
 }
 
 declare module "@trystal/interfaces" {
