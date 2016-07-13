@@ -1,5 +1,7 @@
 declare module "@trystal/interfaces" {
     import {Map,List} from 'immutable'
+    
+    export enum Formats { UNKNOWN= 0, FMT2014 = 20140, FMT2014A= 20141, FMT2015= 20150 }
 
     export interface IdTable<T> { [id:string]:T}
 
@@ -36,4 +38,39 @@ declare module "@trystal/interfaces" {
     
     export interface ChainIM extends Map<string, NodeIM> {}
     export interface IDListIM extends List<string> {}
+
+    namespace Cloud {
+        export interface MapItem {
+            id:string, 
+            rlevel?:number, 
+            format?:string, 
+            next?:string, 
+            vnext?:string, 
+            isDeleted:boolean
+        }
+        export interface ContentItem  {
+            id:string, 
+            link?:string, 
+            imgLink?:string, 
+            text?:string
+        }
+        export interface IEdit {
+            lineId:string,
+            delta:string,
+            isPatch:boolean
+        }
+        export interface Revision {
+            authorId: string
+            date: Date
+            edits: IEdit[]
+            adds: string[]
+            dels: string[]
+        }
+        export interface Trist {
+            version?: Formats,
+            map?: MapItem[],
+            contents?: ContentItem[],
+            revisions?: Revision[]
+        }
+    }
 }
