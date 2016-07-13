@@ -6,4 +6,3 @@
     Formats[Formats["FMT2015"] = 20150] = "FMT2015";
 })(exports.Formats || (exports.Formats = {}));
 var Formats = exports.Formats;
-//# sourceMappingURL=index.js.map
