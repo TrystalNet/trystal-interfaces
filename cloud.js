@@ -6,3 +6,15 @@
     Formats[Formats["FMT2015"] = 20150] = "FMT2015";
 })(exports.Formats || (exports.Formats = {}));
 var Formats = exports.Formats;
+var TristId = (function () {
+    function TristId(uid, filename) {
+        this.uid = uid || null;
+        this.filename = filename || null;
+    }
+    TristId.prototype.toString = function () {
+        var _a = this, uid = _a.uid, filename = _a.filename;
+        return uid + "/" + filename;
+    };
+    return TristId;
+}());
+exports.TristId = TristId;

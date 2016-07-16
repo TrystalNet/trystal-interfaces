@@ -33,8 +33,11 @@ declare module "@trystal/interfaces/cloud" {
         contents?: ContentItem[],
         revisions?: Revision[]
     }
-    export interface Whatever {
-        s:string
+    export class TristId {
+        uid:string | null
+        filename:string | null
+        constructor(uid:string | undefined, filename:string | undefined);
+        toString():string
     }
 }
 declare module "@trystal/interfaces/immutable" {
