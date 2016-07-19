@@ -1,14 +1,15 @@
 {
   "name": "@trystal/interfaces",
-  "version": "2.5.1",
+  "version": "3.0.0",
   "description": "Interfaces for trystal applications and modules",
   "homepage": "https://github.com/trystalnet/trist#readme",
   "author": "Terence O'Neill <terry.oneill@trystal.net>",
   "contributors": [],
   "keywords": [
-    "trystal"
+    "trystal",
+    "linelo"
   ],
-  "main": "index.js",
+  "main": "",
   "typings": "index.d.ts",
   "repository": {
     "type": "git",

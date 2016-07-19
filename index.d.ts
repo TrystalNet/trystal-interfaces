@@ -1,5 +1,7 @@
-declare module "@trystal/interfaces/cloud" {
-    import {Formats} from "@trystal/constants"
+import {Map,List} from 'immutable'
+import {Formats} from "@trystal/constants"
+
+export namespace Cloud {
     export interface MapItem {
         id:string, 
         rlevel?:number, 
@@ -37,96 +39,78 @@ declare module "@trystal/interfaces/cloud" {
         filename:string
     }
 }
-declare module "@trystal/interfaces/immutable" {
-    import {List,Map} from 'immutable'
-    import * as JS from '@trystal/interfaces/js'
-
+export namespace IMM {
     export namespace Payload {
         export type PropName = 'id' | 'trystup' | 'format'
         export type PropType = string
-        export interface IState extends Map<PropName, PropType> { toJS(): JS.Payload; }
+        export interface IState extends Map<PropName, PropType> { toJS(): Payload; }
     }
-
     export namespace Node {
         export type PropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload'
         export type PropType = Payload.IState | string | number
-        interface IState extends Map<PropName, PropType> { toJS(): JS.Node; }
+        interface IState extends Map<PropName, PropType> { toJS(): Node; }
     }
-
     export namespace Chain {
         export interface IState extends Map<string, Node> {}
     }
-
     export namespace Context {
         export type PropName = 'aid' | 'fid' | 'hid'
         export type PropType = string
         export interface IState extends Map<PropName,PropType> {}
     }
-
     export namespace Trist {
         export type PropName = 'trist' | 'history' | 'index' | 'context' | 'nodes'
-        export type PropType = Chain|Context.IState
+        export type PropType = Chain.IState|Context.IState
         export interface IState extends Map<PropName, PropType> {}
     }
-
     export interface IDList extends List<string> {}
 }
-declare module "@trystal/interfaces/js" {
-    export interface IdTable<T> { [id:string]:T}
-    export interface Payload {
-        id: string
-        format?: string
-        trystup?: string
-        link?: string
-        imgLink?: string
-    }
-    export interface Node {
-        id:string
-        prev?: string
-        next?: string
-        PV?: string
-        NV?: string
-        rlevel?: number
-        payload?: Payload
-    }
-    export interface Chain extends IdTable<Node> { }
-    export interface Trist {
-        nodes: Chain
-    }
 
-    export interface Range {
-        anchor: Node
-        focus: Node
-        first: Node
-        last: Node
-        allNodes: Node[]
-        visibleNodes: Node[]
-        level: number
-        multinode: boolean
-    }
-
-    export interface Format {
-        isBold      : boolean
-        isItalic    : boolean
-        isStrikeout : boolean
-        isUnderline : boolean
-        fg          : number
-        bg          : number
-        family      : number
-        fontSize    : number
-    }
-    export interface FindParams {
-        searchUp?:boolean, 
-        fromStart?:boolean
-    }
+export interface IdTable<T> { [id:string]:T}
+export interface Payload {
+    id: string
+    format?: string
+    trystup?: string
+    link?: string
+    imgLink?: string
+}
+export interface Node {
+    id:string
+    prev?: string
+    next?: string
+    PV?: string
+    NV?: string
+    rlevel?: number
+    payload?: Payload
+}
+export interface Chain extends IdTable<Node> { }
+export interface Trist {
+    nodes: Chain
+}
+export interface Range {
+    anchor: Node
+    focus: Node
+    first: Node
+    last: Node
+    allNodes: Node[]
+    visibleNodes: Node[]
+    level: number
+    multinode: boolean
+}
+export interface Format {
+    isBold      : boolean
+    isItalic    : boolean
+    isStrikeout : boolean
+    isUnderline : boolean
+    fg          : number
+    bg          : number
+    family      : number
+    fontSize    : number
+}
+export interface FindParams {
+    searchUp?:boolean, 
+    fromStart?:boolean
 }
 
-declare module "@trystal/interfaces" {
-    import {Map,List} from 'immutable'
-    import * as Cloud from '@trystal/interfaces/cloud' 
-    import * as IMM from '@trystal/interfaces/immutable'
-    import * as JS from '@trystal/interfaces/js' 
 
-    export {JS, IMM, Cloud}
-}
 

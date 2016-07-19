@@ -1,11 +1,10 @@
-# Trist 
+# @Trystal/interfaces
 
-[Site](https://trystal.net/) |
+[trystal.net](https://trystal.net/) |
 [Docs](https://trystal.net/) |
-[Wiki](https://github.com/trystal/trist/wiki "Changelog, Roadmap, etc.") |
-[Code of Conduct](https://jquery.org/conduct/) |
 [Twitter](https://twitter.com/trystalnet) |
 [Chat](https://gitter.im/trystal/trystal)
 
-# Interfaces - various trystal projects share these 
+Typescript interfaces definitions shared by various Trystal, Linelo, and other projects. 
 
+2016-07-19 Switched from modules to namespaces
