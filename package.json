@@ -1,6 +1,6 @@
 {
   "name": "@trystal/interfaces",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "Interfaces for trystal applications and modules",
   "homepage": "https://github.com/trystalnet/trist#readme",
   "author": "Terence O'Neill <terry.oneill@trystal.net>",
@@ -12,10 +12,10 @@
   "typings": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trystalnet/trist-interfaces.git"
+    "url": "git+https://github.com/trystalnet/trystal-interfaces.git"
   },
   "bugs": {
-    "url": "https://github.com/trystalnet/trist-interfaces/issues"
+    "url": "https://github.com/trystalnet/trystal-interfaces/issues"
   },
   "license": "ISC",
   "devDependencies": {},
