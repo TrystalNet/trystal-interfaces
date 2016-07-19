@@ -1,6 +1,5 @@
 declare module "@trystal/interfaces/cloud" {
-    export enum Formats { UNKNOWN= 0, FMT2014 = 20140, FMT2014A= 20141, FMT2015= 20150 }
-    
+    import {Formats} from "@trystal/constants"
     export interface MapItem {
         id:string, 
         rlevel?:number, 
@@ -33,27 +32,42 @@ declare module "@trystal/interfaces/cloud" {
         contents?: ContentItem[],
         revisions?: Revision[]
     }
-    export class TristId {
+    export interface TristId {
         uid:string | null
-        filename:string | null
-        constructor(uid:string | undefined, filename:string | undefined);
-        toString():string
+        filename:string
     }
 }
 declare module "@trystal/interfaces/immutable" {
     import {List,Map} from 'immutable'
     import * as JS from '@trystal/interfaces/js'
 
-    export type PayloadPropName = 'id' | 'trystup' | 'format'
-    export type NodePropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload';
-    export type TristPropName = 'trist' | 'history' | 'index' | 'context' | 'nodes'
-    export type ContextPropName = 'aid' | 'fid' | 'hid'
+    export namespace Payload {
+        export type PropName = 'id' | 'trystup' | 'format'
+        export type PropType = string
+        export interface IState extends Map<PropName, PropType> { toJS(): JS.Payload; }
+    }
 
-    export interface Payload extends Map<PayloadPropName, string> { toJS(): JS.Payload; }
-    export interface Node extends Map<NodePropName, Payload | string | number> { toJS(): JS.Node; }
-    export interface Chain extends Map<string, Node> {}
-    export interface Context extends Map<ContextPropName,string> {}
-    export interface Trist extends Map<TristPropName, Chain|Context> {}
+    export namespace Node {
+        export type PropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload'
+        export type PropType = Payload.IState | string | number
+        interface IState extends Map<PropName, PropType> { toJS(): JS.Node; }
+    }
+
+    export namespace Chain {
+        export interface IState extends Map<string, Node> {}
+    }
+
+    export namespace Context {
+        export type PropName = 'aid' | 'fid' | 'hid'
+        export type PropType = string
+        export interface IState extends Map<PropName,PropType> {}
+    }
+
+    export namespace Trist {
+        export type PropName = 'trist' | 'history' | 'index' | 'context' | 'nodes'
+        export type PropType = Chain|Context.IState
+        export interface IState extends Map<PropName, PropType> {}
+    }
 
     export interface IDList extends List<string> {}
 }
@@ -112,5 +126,7 @@ declare module "@trystal/interfaces" {
     import * as Cloud from '@trystal/interfaces/cloud' 
     import * as IMM from '@trystal/interfaces/immutable'
     import * as JS from '@trystal/interfaces/js' 
+
     export {JS, IMM, Cloud}
 }
+
