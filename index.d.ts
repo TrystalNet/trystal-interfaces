@@ -51,7 +51,7 @@ export namespace IMM {
         interface IState extends Map<PropName, PropType> { toJS(): Node; }
     }
     export namespace Chain {
-        export interface IState extends Map<string, Node> {}
+        export interface IState extends Map<string, Node.IState> {}
     }
     export namespace Context {
         export type PropName = 'aid' | 'fid' | 'hid'
