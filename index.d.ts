@@ -47,7 +47,7 @@ export namespace IMM {
     }
     export namespace Node {
         export type PropName = 'id' | 'rlevel' | 'prev' | 'next' | 'PV' | 'NV' | 'payload'
-        export type PropType = Payload.IState | string | number
+        export type PropType = Payload.IState | string | number | undefined
         interface IState extends Map<PropName, PropType> { toJS(): Node; }
     }
     export namespace Chain {
