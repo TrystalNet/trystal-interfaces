@@ -55,7 +55,7 @@ export namespace IMM {
     }
     export namespace Context {
         export type PropName = 'aid' | 'fid' | 'hid'
-        export type PropType = string
+        export type PropType = string | null
         export interface IState extends Map<PropName,PropType> {}
     }
     export namespace Trist {

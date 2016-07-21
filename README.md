@@ -8,3 +8,9 @@
 Typescript interfaces definitions shared by various Trystal, Linelo, and other projects. 
 
 2016-07-19 Switched from modules to namespaces
+
+## todo
+Publish 3.06>
+
+3.06 
+* Add null to the possible values that can appear in TristIM.Context
