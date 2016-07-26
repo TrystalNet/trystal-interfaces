@@ -1,6 +1,6 @@
 {
   "name": "@trystal/interfaces",
-  "version": "3.0.9",
+  "version": "3.0.11",
   "description": "Interfaces for trystal applications and modules",
   "homepage": "https://github.com/trystalnet/trist#readme",
   "author": "Terence O'Neill <terry.oneill@trystal.net>",
@@ -10,7 +10,7 @@
     "linelo"
   ],
   "main": "",
-  "typings": "index.d.ts",
+  "typings": "/dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/trystalnet/trystal-interfaces.git"
@@ -23,7 +23,7 @@
   "scripts": {},
   "directories": {},
   "dependencies": {
-    "@trystal/constants": "^1.4.2",
+    "@trystal/constants": "^1.4.9",
     "immutable": "^3.8.1"
   }
 }
