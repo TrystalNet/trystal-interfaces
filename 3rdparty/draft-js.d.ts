@@ -48,6 +48,18 @@ declare module "draft-js" {
     offset : number
     length : number
   }
+  export interface DraftDecorator {
+    strategy:(
+      block:    ContentBlock, 
+      callback: (start:number,end:number)=>void
+    )=>void
+    component:Function
+    props?:{}
+  }
+  export class CompositeDecorator {
+    constructor(decorators:DraftDecorator[])
+
+  }
   export class EditorState {  
     static push(
       editorState:EditorState,
@@ -58,6 +70,8 @@ declare module "draft-js" {
       editorState:EditorState, 
       selection:SelectionState
     ):EditorState
+    static moveSelectionToEnd(editorState:EditorState):EditorState
+    static createWithContent(contentState:ContentState,decorators:CompositeDecorator):EditorState
 
     getCurrentContent():ContentState
     getSelection():SelectionState
